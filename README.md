@@ -22,11 +22,11 @@ UpTrader - test task
 
 
 ### Примечания:
-* Cоздание администратора и миграций, а также их применение:
+Cоздание администратора и миграций, а также их применение:
  
-    ```sh
-    python manage.py makemigrations
-    python manage.py migrate
+```sh
+python manage.py makemigrations
+python manage.py migrate
 
-    python manage.py createsuperuser
-    ```
+python manage.py createsuperuser
+```
