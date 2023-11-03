@@ -1,0 +1,11 @@
+
+<li>{{ item.name }}
+    {% if item.children.exists %}
+        <ul class="submenu">
+            {% for child in item.children.all %}
+                {% include "templatetags/menu_inner.html" with item=child %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>
+

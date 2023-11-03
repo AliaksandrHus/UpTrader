@@ -1,0 +1,79 @@
+<style>
+
+@import url('https://fonts.googleapis.com/css?family=Ubuntu+Condensed');
+
+.submenu {
+    display: none;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    margin-left: -21px;
+}
+
+.menu li:hover > .submenu {
+    display: block;
+    width: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    background: rgba(255, 255, 255, 1);
+    font-family: 'Ubuntu Condensed', sans-serif;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    border-color: rgba(48, 48, 48, 0.2);
+}
+
+.menu {
+    width: 100px;
+    height: 600px;
+    border-radius: 30px;
+    margin-left: 100px;
+    padding: 30px 30px;
+    background: RGB(48, 48, 48);
+    font-family: 'Ubuntu Condensed', sans-serif;
+    color: white;
+}
+
+.menu H1 {
+    text-align: center;
+    padding: 10px 0;
+    color: white;
+}
+
+li {
+    list-style-type: none;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.menu li:hover {
+    color: RGB(0, 157, 224);
+}
+
+.menu li:hover > .submenu {
+    color: RGB(48, 48, 48);
+}
+
+</style>
+
+<ul class="menu">
+
+    <h1>МЕНЮ</h1>
+
+    {% for item in menu %}
+        {% if item.parent == None %}
+
+            <li>{{ item.name }}
+                {% if item.children.exists %}
+                    <ul class="submenu">
+                        {% for child in item.children.all %}
+                            {% include "templatetags/menu_inner.html" with item=child %}
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            </li>
+
+        {% endif %}
+    {% endfor %}
+
+</ul>
