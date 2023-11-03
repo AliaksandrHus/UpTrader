@@ -1,5 +1,5 @@
 
-<li>{{ item.name }}
+<li><a href="{{ item.url }}">{{ item.name }}</a>
     {% if item.children.exists %}
         <ul class="submenu">
             {% for child in item.children.all %}
