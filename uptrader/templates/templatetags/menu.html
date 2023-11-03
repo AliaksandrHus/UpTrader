@@ -54,6 +54,21 @@ li {
     color: RGB(48, 48, 48);
 }
 
+.menu a {
+    text-decoration: none;
+    color: white;
+}
+
+.submenu a {
+    text-decoration: none;
+    color: RGB(48, 48, 48);
+}
+
+.menu a:hover {
+    color: RGB(0, 157, 224);
+}
+
+
 </style>
 
 <ul class="menu">
@@ -63,7 +78,7 @@ li {
     {% for item in menu %}
         {% if item.parent == None %}
 
-            <li>{{ item.name }}
+            <li><a href="{{ item.url }}">{{ item.name }}</a>
                 {% if item.children.exists %}
                     <ul class="submenu">
                         {% for child in item.children.all %}
